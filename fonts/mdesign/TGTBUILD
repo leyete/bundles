@@ -1,0 +1,32 @@
+#                        __      __
+#                   ____/ /___  / /_
+#                  / __  / __ \/ __/
+#                 / /_/ / /_/ / /_
+#                 \__,_/\____/\__/  (_)
+#
+#   BUNDLE: leyete/bundles/polybar
+#   TARGET: polybar
+
+# target type.
+TARGET[type]=$TARGET_TYPE_TOOL
+
+# installation directory.
+TARGET[install_dir]="$XDG_DATA_HOME/fonts"
+
+# [[[ TARGET FUNCTIONS
+
+function target_latest_version() {
+    # pull the latest version from the AUR (usually up-to-date).
+    curl -fsSL 'https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=ttf-material-design-icons-extended' \
+        | egrep '^pkgver=[0-9\.]+$' | cut -d'=' -f2
+}
+
+function target() {
+    declare version="$1" dest="bin/material-design-icons-extended.ttf"
+    mkdir -p bin
+    curl -fsSL --output "$dest" "https://cdn.materialdesignicons.com/$version/fonts/materialdesignicons-webfont.ttf"
+}
+
+# ]]]
+
+# vim: ft=zsh foldenable fdm=marker foldmarker=[[[,]]] et fenc=utf-8

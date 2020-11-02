@@ -1,0 +1,36 @@
+#                        __      __
+#                   ____/ /___  / /_
+#                  / __  / __ \/ __/
+#                 / /_/ / /_/ / /_
+#                 \__,_/\____/\__/  (_)
+#
+#   BUNDLE: leyete/bundles/rofi
+#   TARGET: rofi
+
+TARGET[type]=$TARGET_TYPE_TOOL
+
+declare -a dependencies_arch=( gcc make autoconf automake pkgconf flex bison pango cairo
+                               librsvg startup-notification libxkbcommon libxkbcommon-x11
+                               libxcb xcb-util xcb-util-wm xcb-util-xrm )
+declare -a dependencies_debian=( gcc make autoconf automake pkg-config flex bison libpango1.0-dev
+                                 libpangocairo-1.0-0 libcairo2-dev libglib2.0-dev librsvg2-dev
+                                 libstartup-notification0-dev libxkbcommon-dev libxkbcommon-x11-dev
+                                 libjpeg-dev libxcb-xkb-dev libxcb-randr0-dev libxcb-xinerama0-dev
+                                 libxcb-util0-dev libxcb-ewmh-dev libxcb-icccm4-dev libxcb-xrm0-dev )
+
+function target_latest_version() {
+    git ls-remote --tags -q --refs https://github.com/davatorium/rofi.git | cut -d'/' -f3 | sort -Vr | head -1
+}
+
+function target() {
+    declare version="$1"
+    git clone -b "$version" --depth=1 -- https://github.com/davatorium/rofi.git source
+    # update submodules.
+    ( cd source; git submodule update --init; autoreconf -i; )
+    # compile and install.
+    ( mkdir -p source/build && cd $_; ../configure --prefix="$OLDPWD" --disable-check; make && make install )
+    # clean up.
+    rm -rf source
+}
+
+# vim: ft=zsh

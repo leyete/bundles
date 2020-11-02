@@ -1,0 +1,21 @@
+#                        __      __
+#                   ____/ /___  / /_
+#                  / __  / __ \/ __/
+#                 / /_/ / /_/ / /_
+#                 \__,_/\____/\__/  (_)
+#
+#   BUNDLE: leyete/bundles/rofi
+#   TARGET: rofi
+
+TARGET[type]=$TARGET_TYPE_LINK
+
+declare -A links=(
+    modi $XDG_DATA_HOME/rofi/modi
+)
+
+declare -A links_cosmos=(
+    cosmos.rasi $XDG_CONFIG_HOME/rofi/config.rasi
+)
+
+# vim: ft=zsh
+

@@ -7,8 +7,8 @@
 #   AUTOSTART
 # ------------------------------------------------------------------------------
 
-sxhkd &  # start the simple X hotkey daemon to manage bspwm keybindings
-$XDG_CONFIG_HOME/polybar/launch.zsh -P cosmos.ini workspace status &
+sxhkd &  # start the simple X hotkey daemon to manage bspwm keybindings.
+$XDG_CONFIG_HOME/polybar/launch.zsh -m DP-0 workspace status &
 
 # ------------------------------------------------------------------------------
 #   MONITORS AND WORKSPACES
@@ -20,24 +20,24 @@ bspc monitor DP-0 -d I II III IV V VI  # main monitor
 #   CONFIG
 # ------------------------------------------------------------------------------
 
-bspc config border_width                    2      # window border width
-bspc config window_gap                      4      # gap that separates windows
-bspc config top_padding                     0      # gap from the top frame
-bspc config bottom_padding                  0      # gap form the bottom frame
-bspc config left_padding                    0      # gap form the left frame
-bspc config right_padding                   0      # gap from the right padding
-bspc config single_monocle                  true   # single node in monocle layout (fullscreen)
-bspc config click_to_focus                  true   # focus window/monitor on click (button1)
-bspc config split_ratio                     0.5    # default split ratio
-bspc config borderless_monocle              true   # remove borders for the monocle layout
-bspc config gapless_monocle                 false  # remove gaps for the monocle layout
-bspc config focus_follows_pointer           true   # focus window under the pointer
-bspc config remove_disabled_monitors        true   # consider disabled monitors as disconnected
-bspc config merge_overlapping_monitors      true   # merge overlapping monitors
-bspc config pointer_modifier                mod4   # modifier for moving or resizing windows (super)
-bspc config pointer_action1                 move   # action when button1 is pressed
-bspc config pointer_action2                 resize_side    # action when button2 is pressed
-bspc config pointer_action3                 resize_corner  # action when button3 is pressed
+bspc config border_width                    2      # window border width.
+bspc config window_gap                      4      # gap that separates windows.
+bspc config top_padding                     0      # gap from the top frame.
+bspc config bottom_padding                  0      # gap form the bottom frame.
+bspc config left_padding                    0      # gap form the left frame.
+bspc config right_padding                   0      # gap from the right padding.
+bspc config single_monocle                  true   # single node in monocle layout.
+bspc config click_to_focus                  true   # focus window/monitor on click (button1).
+bspc config split_ratio                     0.5    # default split ratio.
+bspc config borderless_monocle              true   # remove borders for the monocle layout.
+bspc config gapless_monocle                 false  # remove gaps for the monocle layout.
+bspc config focus_follows_pointer           true   # focus window under the pointer.
+bspc config remove_disabled_monitors        true   # consider disabled monitors as disconnected.
+bspc config merge_overlapping_monitors      true   # merge overlapping monitors.
+bspc config pointer_modifier                mod4   # modifier for moving or resizing windows (super).
+bspc config pointer_action1                 move   # action when button1 is pressed.
+bspc config pointer_action2                 resize_side    # action when button2 is pressed.
+bspc config pointer_action3                 resize_corner  # action when button3 is pressed.
 
 # ------------------------------------------------------------------------------
 #   COLOR SCHEME

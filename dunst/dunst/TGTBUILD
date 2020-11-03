@@ -1,0 +1,31 @@
+#                        __      __
+#                   ____/ /___  / /_
+#                  / __  / __ \/ __/
+#                 / /_/ / /_/ / /_
+#                 \__,_/\____/\__/  (_)
+#
+#   BUNDLE: leyete/bundles/dunst
+#   TARGET: dunst
+
+# target type.
+TARGET[type]=$TARGET_TYPE_TOOL
+
+# system dependencies.
+declare -a dependencies_arch=( dbus libxinerama libxrandr libxss glib2 pango cairo gtk3 libnotify )
+declare -a dependencies_debian=( dbus libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev
+                                 libpango1.0-dev libcairo2-dev libgtk-3-dev libnotify-dev )
+
+function target_latest_version() {
+    git ls-remote --tags --refs https://github.com/dunst-project/dunst | cut -d'/' -f3 | egrep -o '[0-9\.]+' | sort -Vr | head -1
+}
+
+function target() {
+    declare version="$1"
+    git clone -b "v$version" --depth=1 -- https://github.com/dunst-project/dunst.git source
+    # compile and install.
+    ( cd source; make PREFIX="${TARGET[dir]}"; make install PREFIX="${TARGET[dir]}" )
+    # clean up.
+    rm -rf source
+}
+
+# vim: ft=zsh foldenable fdm=marker foldmarker=[[[,]]] et fenc=utf-8

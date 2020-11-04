@@ -127,7 +127,7 @@ super + shift + f
 # DUNST NOTIFICATIONS (super + shift + alt + key)
 
 # context menu | close | close all | pop from history
-super + shift + alt + {Home,Delete,End,Insert}
+super + shift + {Home,Delete,End,Insert}
     dunstctl {context,close,close-all,history-pop}
 
 # ROFI SHORTCUTS.

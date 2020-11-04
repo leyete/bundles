@@ -67,28 +67,40 @@
 
 [shortcuts]
     # DEPRECATED: Use dunstctl + key event manager (sxhkd).
-    close =
+    close     =
     close_all =
-    history =
-    context =
+    history   =
+    context   =
 
 [urgency_low]
     background = "#24292e"
     foreground = "#ffffff"
-    timeout = 10
-    #icon = /path/to/icon
+    timeout    = 10
+    #icon      = /path/to/icon
 
 [urgency_normal]
     background = "#24292e"
     foreground = "#ffffff"
-    timeout = 10
-    #icon = /path/to/icon
+    timeout    = 10
+    #icon      = /path/to/icon
 
 [urgency_critical]
-    background = "#24292e"
-    foreground = "#ffffff"
+    background  = "#24292e"
+    foreground  = "#ffffff"
     frame_color = "#c397d8"
-    timeout = 0
-    #icon = /path/to/icon
+    timeout     = 0
+    #icon       = /path/to/icon
+
+# NordVPN (from AUR) displays notify-send as the notification
+# title. These rules show 'NordVPN' as the title instead.
+[nordvpn_connect]
+    body   = "You are connected to *"
+    icon   = "/var/lib/nordvpn/icon.svg"
+    format = "NordVPN\n%b\n"
+
+[nordvpn_disconnect]
+    body   = "You are disconnected from NordVPN."
+    icon   = "/var/lib/nordvpn/icon.svg"
+    format = "NordVPN\n%b\n"
 
 # vim: ft=cfg

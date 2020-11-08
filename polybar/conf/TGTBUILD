@@ -1,0 +1,26 @@
+#                        __      __
+#                   ____/ /___  / /_
+#                  / __  / __ \/ __/
+#                 / /_/ / /_/ / /_
+#                 \__,_/\____/\__/  (_)
+#
+#   BUNDLE: leyete/bundles/polybar
+#   TARGET: conf
+
+TARGET[type]=$TARGET_TYPE_LINK
+
+# [[[ TARGET LINKS
+
+declare -A links=(
+    launch.zsh  $XDG_CONFIG_HOME/polybar/launch.zsh   # polybar launch script.
+    modules.ini $XDG_CONFIG_HOME/polybar/modules.ini  # polybar modules.
+    scripts     $XDG_CONFIG_HOME/polybar/scripts      # polybar scripts (custom modules).
+)
+
+declare -A links_cosmos=(
+    cosmos.ini $XDG_CONFIG_HOME/polybar/config.ini    # configuration file.
+)
+
+# ]]]
+
+# vim: ft=zsh foldenable fdm=marker foldmarker=[[[,]]] et fenc=utf-8

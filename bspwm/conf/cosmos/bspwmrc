@@ -8,6 +8,7 @@
 # ------------------------------------------------------------------------------
 
 sxhkd &  # start the simple X hotkey daemon to manage bspwm keybindings.
+dunst &  # start the notification server (dunst).
 $XDG_CONFIG_HOME/polybar/launch.zsh -m DP-0 workspace status &
 
 # ------------------------------------------------------------------------------

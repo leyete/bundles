@@ -1,0 +1,40 @@
+#                        __      __
+#                   ____/ /___  / /_
+#                  / __  / __ \/ __/
+#                 / /_/ / /_/ / /_
+#                 \__,_/\____/\__/  (_)
+#
+#   BUNDLE: leyete/bundles/python
+#   TARGET: python
+
+# Target type.
+TARGET[type]=$TARGET_TYPE_TOOL
+
+# System dependencies.
+declare -a dependencies_arch=(
+  zlib libffi openssl bzip2 libxcrypt libnsl expat base-devel
+  tk sqlite gdbm ncurses readline xz
+)
+declare -a dependencies_debian=(
+  zlib1g-dev libffi-dev libssl-dev libbz2-dev libncursesw5-dev libgdbm-dev
+  liblzma-dev libsqlite3-dev tk-dev uuid-dev libreadline-dev
+)
+
+# [[[ TARGET FUNCTIONS
+
+function target_latest_version() {
+  echo "${"$(git ls-remote --tags --refs https://github.com/python/cpython | cut -d'/' -f3 | egrep -v '(a|b|rc)' | sort -Vr | head -1)":1}"
+}
+
+function target() {
+  declare version="$1"
+  git clone -b "$version" --depth=1 -- https://github.com/python/cpython.git cpython
+  # compile and install.
+  ( cd cpython; ./configure --prefix="${TARGET[install_dir]}"; make; make install; )
+  # clean up.
+  rm -rf cpython
+}
+
+# ]]]
+
+# vim: ft=zsh foldenable fdm=marker foldmarker=[[[,]]] et fenc=utf-8

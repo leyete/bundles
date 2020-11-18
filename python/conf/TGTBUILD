@@ -13,6 +13,7 @@ TARGET[type]=$TARGET_TYPE_LINK
 # Target links.
 declare -A links=(
   pythonrc $XDG_CONFIG_HOME/python/pythonrc
+  environment.zsh ${ZSH_CUSTOM:-$XDG_CONFIG_HOME/zsh/custom}/python.zsh
 )
 
 # vim: ft=zsh foldenable fdm=marker foldmarker=[[[,]]] et fenc=utf-8

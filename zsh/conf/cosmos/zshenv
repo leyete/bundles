@@ -1,0 +1,31 @@
+# .zshenv - ZSH environment (run for every zsh).
+
+# XDG Base Directory Specification.
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_CACHE_DIR="${XDG_CACHE_DIR:-$HOME/.cache}"
+
+# DOTHOME setup.
+export DOTHOME="$XDG_DATA_HOME/dot"
+
+# Set up the PATH variable.
+typeset -U PATH path
+path=( "$DOTHOME/bin" "$HOME/.local/bin" "$path[@]" )
+
+# ZSH configuration. We will set ZDOTDIR to a directory inside
+# XDG_CONFIG_HOME to clean up the HOME directory.
+ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZSH_CUSTOM="$ZDOTDIR/custom"
+export ZSH_CONFIG="$ZDOTDIR/config"
+export ZSH_CACHE_DIR="$XDG_CACHE_DIR/zsh"
+
+# Additional environment.
+export EDITOR="nvim"
+export PAGER="less"
+export BROWSER="firefox"
+export READER="zathura"
+export TERMINAL="st"
+export FILE_MANAGER="ranger"
+export WINDOW_MANAGER="bspwm"
+
+export LESSHISTFILE="$XDG_DATA_HOME/less/history"

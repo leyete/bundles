@@ -1,0 +1,9 @@
+# .zprofile - Session profile (run on login shells).
+
+# Start a graphical server on tty1 if not already running.
+if [[ "$(tty)" == "/dev/tty1" ]]; then
+  systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]] && \
+    exec startx "$XDG_CONFIG_HOME/xorg/xinitrc" "$WINDOW_MANAGER"
+fi
+
+# vim: ft=zsh ts=2 sw=2 sts=2 :

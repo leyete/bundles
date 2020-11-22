@@ -1,0 +1,24 @@
+# .zshrc - ZSH configuration file (loaded for interactive shells).
+
+# ZSH FUNCTION/COMPLETION PATH.
+fpath=( "$ZDOTDIR/functions" "$ZDOTDIR/completion" "$fpath[@]" )
+
+# INITIALIZE COMPLETION.
+autoload -U compaudit compinit
+
+# Set the location of the current completion dump file.
+[[ -z "$ZSH_COMPDUMP" ]] && ZSH_COMPDUMP="$ZSH_CACHE_DIR/.zcompdump-${ZSH_VERSION}"
+compinit -i -C -d "$ZSH_COMPDUMP"
+
+# LOAD ADDITIONAL CONFIGURATION.
+for config_file ( $ZSH_CONFIG/*.zsh(N) ); do
+  source $config_file
+done
+
+# CUSTOM FILES: this files are not synced with the remote repository
+# and can vary depending on what we want to install.
+for custom_file ( $ZSH_CUSTOM/*.zsh(N) ); do
+  source $custom_file
+done
+
+unset config_file custom_file
